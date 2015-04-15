@@ -43,7 +43,7 @@ class LinkedList
 		if ll.nil?
 			"| |"
 		else
-
+			#\| { ll } |\"
 		end
 	end
 end
