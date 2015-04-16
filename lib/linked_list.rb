@@ -1,22 +1,21 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-	attr_reader :size
+	attr_accessor :size
 	attr_accessor :last
-	attr_reader :ll
+	attr_accessor :ll
 
 	def initialize
 		@size = 0
 		@last
-		#@ll = LinkedList.new
 	end
 
-	def push(data)
+	def push(payload)
 		if @first_item.nil?
-			@first_item = LinkedListItem.new(data)
+			@first_item = LinkedListItem.new(payload)
 			@last_item = @first_item
 		else
-			@last_item.next_item = LinkedListItem.new(data)
+			@last_item.next_item = LinkedListItem.new(payload)
 			@last_item = @last_item.next_item
 			@last = @last_item.payload
 		end
@@ -29,21 +28,27 @@ class LinkedList
 		if index == 0
 			@first_item.payload
 		else
-			count = 0
 			current_node = @first_item
-			while count < index
+			index.times do
 				current_node = current_node.next_item
-				count += 1
 			end
 			current_node.payload
 		end
 	end
 
 	def to_s
-		if ll.nil?
+		str = ""
+		if @size == 0
 			"| |"
+		elsif @size == 1
+			"| #{@first_item.payload} |"
 		else
-			#\| { ll } |\"
+			(@size - 1).times do |i|
+				str << "#{get(i)}, "
+			end
+				str << "#{@last_item.payload} "
+			return "| #{str}|"
 		end
 	end
 end
+

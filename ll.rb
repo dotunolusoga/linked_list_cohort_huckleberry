@@ -19,12 +19,8 @@ else
 	 print "* -> nil"
 end
 
-
-# And, populate it
-#
-# <YOUR CODE GOES HERE>
-
-
-# Then, print it out
-#
-#print arrow + payloads.to_s
+#Refactored code
+#print "* -> "
+#payloads.size.times do |i|
+	#print "#{ll.get(i).inspect} -> "
+#end
