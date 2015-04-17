@@ -3,11 +3,12 @@ require_relative 'linked_list_item'
 class LinkedList
 	attr_accessor :size
 	attr_accessor :last
-	attr_accessor :ll
+	#attr_accessor :ll
 
-	def initialize
+	def initialize(*payload)
 		@size = 0
 		@last
+		payload.each { |payload| push(payload) }
 	end
 
 	def push(payload)
@@ -36,7 +37,7 @@ class LinkedList
 		end
 	end
 
-	def to_s
+	def to_s(*)
 		str = ""
 		if @size == 0
 			"| |"
@@ -50,5 +51,10 @@ class LinkedList
 			return "| #{str}|"
 		end
 	end
+
+	def [] (index)
+		get(index)
+	end
+
 end
 
