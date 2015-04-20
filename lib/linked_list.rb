@@ -1,9 +1,7 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-	attr_accessor :size
-	attr_accessor :last
-	attr_accessor :payload
+	attr_accessor :size, :last, :payload
 
 
 	def initialize(*payload)
@@ -35,7 +33,7 @@ class LinkedList
 			index.times do
 				current_node = current_node.next_item
 			end
-			current_node.payload
+			return current_node.payload
 		end
 	end
 
@@ -67,10 +65,11 @@ class LinkedList
 		str
 	end
 
+	alias [] get
 
-	def [] (index)
-		get(index)
-	end
+	#def [] (index)
+		#get(index)
+	#end
 
 	def []=(index, data)
 		current_node = @first_item
@@ -81,7 +80,7 @@ class LinkedList
 	end
 
 	def delete(index)
-		raise IndexError if @first_item.nil?
+		raise IndexError if @first_item.nil? || index < 0
 		@size -= 1
 		current_node = @first_item
 		if index > 0
@@ -93,6 +92,25 @@ class LinkedList
 			@first_item = current_node.next_item
 		end
 	end
+
+	def index(data)
+			current_item = @first_item
+			if @size == 0
+				nil
+			else
+				count = 0
+				if current_item.payload == data
+					return count
+				end
+				until current_item.last?
+					current_item = current_item.next_item
+					count += 1
+					if current_item.payload == data
+						return count
+					end
+				end
+			end
+		end
 
 end
 
