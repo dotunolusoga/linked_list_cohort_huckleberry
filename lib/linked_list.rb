@@ -112,5 +112,37 @@ class LinkedList
 			end
 		end
 
+
+		def sorted?
+			if @size < 2
+				true
+			else
+				current_item = @first_item
+				if current_item > current_item.next_item
+					return false
+				else
+					return true
+				end
+			end
+		end
+
+		def sort!
+			if size > 1
+				size.times do
+					if @first_item < @first_item.next_item
+				 		current_item = @first_item
+						@first_item = current_item.next_item
+				# 	until current_item.last? do
+				# 		current_item = @first_item
+				# 		@first_item = @first_item.next_item
+				# 		current_item = current_item.next_item if current_item.next_item > current_item
+				# 	end
+				# 	# @first_item.next_item = current_item
+				# 	# @first_item.next_item.next_item = nil
+				  end
+				end
+			end
+		end
+
 end
 
